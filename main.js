@@ -1,44 +1,32 @@
-const { app, BrowserWindow, screen } = require('electron')
+const { app, BrowserWindow } = require('electron');
+const path = require('path');
 
 function createWindow() {
-  // Obtenemos todas las pantallas
-  const displays = screen.getAllDisplays()
-  
-  // Suponemos que la segunda pantalla es displays[1] (ajustar si hay menos)
-  const externalDisplay = displays.length > 1 ? displays[1] : null
-  
-  // Opciones ventana
-  let winOpts = {
-    fullscreen: true,
-    frame: false,
+  const win = new BrowserWindow({
+    width: 800,
+    height: 600,
+    frame: false, // Sin bordes ni barra
+    transparent: true, // Fondo transparente
+    alwaysOnTop: true, // Siempre visible
+    hasShadow: false,
+    resizable: false,
     webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false,
-    }
-  }
+      preload: path.join(__dirname, 'preload.js'),
+    },
+  });
 
-  if (externalDisplay) {
-    winOpts.x = externalDisplay.bounds.x
-    winOpts.y = externalDisplay.bounds.y
-    winOpts.width = externalDisplay.bounds.width
-    winOpts.height = externalDisplay.bounds.height
-  }
-
-  const win = new BrowserWindow(winOpts)
-
-  win.loadFile('index.html')
-  // win.webContents.openDevTools() // Descomenta para debug
+  win.loadFile('index.html');
+  win.setIgnoreMouseEvents(false); // Puedes poner true si quieres que sea clickeable lo que hay detrás
 }
 
 app.whenReady().then(() => {
-  createWindow()
+  createWindow();
 
-  app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow()
-  })
-})
+  app.on('activate', function () {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
+});
 
-app.on('window-all-closed', () => {
-  // En macOS apps normalmente siguen abiertas hasta Cmd+Q
-  if (process.platform !== 'darwin') app.quit()
-})
+app.on('window-all-closed', function () {
+  if (process.platform !== 'darwin') app.quit();
+});
