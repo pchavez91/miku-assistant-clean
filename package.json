@@ -1,8 +1,10 @@
 {
   "name": "miku-assistant",
   "version": "1.0.0",
+  "description": "Asistente de escritorio con Miku y Electron",
   "main": "main.js",
   "scripts": {
+    "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,7 +18,6 @@
     "url": "https://github.com/pchavez91/miku-system-assistant/issues"
   },
   "homepage": "https://github.com/pchavez91/miku-system-assistant#readme",
-  "description": "",
   "devDependencies": {
     "electron": "^37.2.1"
   }

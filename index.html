@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Miku Assistant</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0; 
+      background: #222;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      user-select: none;
+    }
+    #miku {
+      width: 300px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    #miku:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
-  <div id="container">
-    <img id="miku" src="assets/miku_idle.gif" alt="Miku">
-    <div id="bubble">¡Hola, soy Miku! 💙</div>
-  </div>
+  <img id="miku" src="miku-ejemplo.png" alt="Miku" />
   <script src="renderer.js"></script>
 </body>
 </html>
