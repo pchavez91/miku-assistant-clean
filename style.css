@@ -1,18 +1,33 @@
-body {
-  margin: 0;
-  background: transparent;
+html, body {
+  margin: 0; 
+  height: 100%;
   overflow: hidden;
+  background: linear-gradient(-45deg, #00c3ff, #5e17eb, #00f7ff, #2a0a78);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  position: relative;
 }
 
-#container {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
+#bgCanvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
 }
 
 #miku {
-  height: 400px;
-  pointer-events: none; /* Para que no interfiera si quieres mover el mouse detrás */
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+  width: 250px;
+  z-index: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
