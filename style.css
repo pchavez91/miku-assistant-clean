@@ -6,7 +6,10 @@ html, body {
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
   position: relative;
+  background: linear-gradient(-45deg, #00c3ff, #5e17eb, #00f7ff, #2a0a78);
+  background-size: 400% 400%;
 }
+
 
 #bgCanvas {
   position: fixed;
@@ -31,3 +34,12 @@ html, body {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+#miku {
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+  width: 250px;
+  z-index: 1;
+}
+

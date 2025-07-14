@@ -1,18 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Miku Assistant</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Miku Animated Background</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+      background: linear-gradient(-45deg, #00c3ff, #5e17eb, #00f7ff, #2a0a78);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      position: relative;
+    }
+    #bgCanvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none; /* para no bloquear clicks */
+    }
+    #mikuDance {
+      position: fixed;
+      bottom: 0;
+      right: 20px;
+      width: 300px;
+      height: 300px;
+      z-index: 2;
+      user-select: none;
+      pointer-events: none;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
 </head>
 <body>
-  <div id="container">
-    <canvas id="bgCanvas"></canvas>
-    <img src="assets/miku-ejemplo.png" alt="Miku" id="miku">
-  </div>
-  <script src="renderer.js"></script>
+  <canvas id="bgCanvas"></canvas>
+  <img id="mikuDance" src="assets/miku_dance/0.gif" alt="Miku bailando" />
+  <script src="app.js"></script>
 </body>
-<script src="background.js"></script>
-
 </html>
-
